@@ -118,11 +118,11 @@ MonoBehaviour:
   bodyMaterial: {fileID: 2100000, guid: c3dc5a90c49c99142999f85d6b419d80, type: 2}
   onHitBodyGradient:
     serializedVersion: 2
-    key0: {r: 0.22745098, g: 0, b: 0, a: 1}
-    key1: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
-    key2: {r: 0.8352941, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0.066037714, g: 0.016509429, b: 0.016509429, a: 1}
+    key1: {r: 2, g: 0, b: 0, a: 1}
+    key2: {r: 0.06603773, g: 0.0015574933, b: 0.0015574933, a: 0}
+    key3: {r: 0.06603773, g: 0.0015574933, b: 0.0015574933, a: 0}
+    key4: {r: 0.06603773, g: 0.0015574933, b: 0.0015574933, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
     ctime1: 21203
     ctime2: 65535
     ctime3: 65535
-    ctime4: 0
+    ctime4: 65535
     ctime5: 0
     ctime6: 0
     ctime7: 0
