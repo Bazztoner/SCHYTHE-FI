@@ -155,6 +155,8 @@ public class ProjectileStandard : MonoBehaviour
             RaycastHit[] hits = Physics.SphereCastAll(m_LastRootPosition, radius, displacementSinceLastFrame.normalized, displacementSinceLastFrame.magnitude, hittableLayers, k_TriggerInteraction);
             foreach (var hit in hits)
             {
+                Debug.DrawRay(m_LastRootPosition, displacementSinceLastFrame.normalized, Color.red, 2f);
+                Debug.DrawLine(m_LastRootPosition, m_LastRootPosition*displacementSinceLastFrame.magnitude, Color.cyan, 2f);
                 if (IsHitValid(hit) && hit.distance < closestHit.distance)
                 {
                     foundHit = true;
