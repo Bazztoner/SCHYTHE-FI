@@ -24,7 +24,7 @@ public class PlayerCharacterController : MonoBehaviour
     [Tooltip("Sharpness for the movement when grounded, a low value will make the player accelerate and decelerate slowly, a high value will do the opposite")]
     public float movementSharpnessOnGround = 15;
     [Tooltip("Max movement speed when crouching")]
-    [Range(0,1)]
+    [Range(0, 1)]
     public float maxSpeedCrouchedRatio = 0.5f;
     [Tooltip("Max movement speed when not grounded")]
     public float maxSpeedInAir = 10f;
@@ -101,7 +101,7 @@ public class PlayerCharacterController : MonoBehaviour
             return 1f;
         }
     }
-        
+
     Health m_Health;
     PlayerInputHandler m_InputHandler;
     CharacterController m_Controller;
@@ -114,6 +114,9 @@ public class PlayerCharacterController : MonoBehaviour
     float m_CameraVerticalAngle = 0f;
     float m_footstepDistanceCounter;
     float m_TargetCharacterHeight;
+
+    public byte maxJumps = 2;
+    byte _currentJumps;
 
     const float k_JumpGroundingPreventionTime = 0.2f;
     const float k_GroundCheckDistanceInAir = 0.07f;
@@ -148,7 +151,7 @@ public class PlayerCharacterController : MonoBehaviour
     void Update()
     {
         // check for Y kill
-        if(!isDead && transform.position.y < killHeight)
+        if (!isDead && transform.position.y < killHeight)
         {
             m_Health.Kill();
         }
@@ -222,6 +225,7 @@ public class PlayerCharacterController : MonoBehaviour
                     IsNormalUnderSlopeLimit(m_GroundNormal))
                 {
                     isGrounded = true;
+                    _currentJumps = 0;
 
                     // handle snapping to the ground
                     if (hit.distance > m_Controller.skinWidth)
@@ -279,30 +283,6 @@ public class PlayerCharacterController : MonoBehaviour
                 // smoothly interpolate between our current velocity and the target velocity based on acceleration speed
                 characterVelocity = Vector3.Lerp(characterVelocity, targetVelocity, movementSharpnessOnGround * Time.deltaTime);
 
-                // jumping
-                if (isGrounded && m_InputHandler.GetJumpInputDown())
-                {
-                    // force the crouch state to false
-                    if (SetCrouchingState(false, false))
-                    {
-                        // start by canceling out the vertical component of our velocity
-                        characterVelocity = new Vector3(characterVelocity.x, 0f, characterVelocity.z);
-
-                        // then, add the jumpSpeed value upwards
-                        characterVelocity += Vector3.up * jumpForce;
-
-                        // play sound
-                        audioSource.PlayOneShot(jumpSFX);
-
-                        // remember last time we jumped because we need to prevent snapping to ground for a short time
-                        m_LastTimeJumped = Time.time;
-                        hasJumpedThisFrame = true;
-
-                        // Force grounding to false
-                        isGrounded = false;
-                        m_GroundNormal = Vector3.up;
-                    }
-                }
 
                 // footsteps sound
                 float chosenFootstepSFXFrequency = (isSprinting ? footstepSFXFrequencyWhileSprinting : footstepSFXFrequency);
@@ -329,6 +309,32 @@ public class PlayerCharacterController : MonoBehaviour
 
                 // apply the gravity to the velocity
                 characterVelocity += Vector3.down * gravityDownForce * Time.deltaTime;
+            }
+        }
+
+        // jumping
+        if ((isGrounded || _currentJumps < 2) && m_InputHandler.GetJumpInputDown())
+        {
+            // force the crouch state to false
+            if (SetCrouchingState(false, false))
+            {
+                // start by canceling out the vertical component of our velocity
+                characterVelocity = new Vector3(characterVelocity.x, 0f, characterVelocity.z);
+
+                // then, add the jumpSpeed value upwards
+                characterVelocity += Vector3.up * jumpForce;
+
+                // play sound
+                audioSource.PlayOneShot(jumpSFX);
+
+                // remember last time we jumped because we need to prevent snapping to ground for a short time
+                m_LastTimeJumped = Time.time;
+                hasJumpedThisFrame = true;
+
+                // Force grounding to false
+                isGrounded = false;
+                m_GroundNormal = Vector3.up;
+                _currentJumps++;
             }
         }
 
