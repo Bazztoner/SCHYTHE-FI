@@ -124,7 +124,7 @@ MonoBehaviour:
     crosshairSprite: {fileID: 21300000, guid: e881aa18189b12f4e915fc5b14ddc421, type: 3}
     crosshairSize: 40
     crosshairColor: {r: 1, g: 0, b: 0, a: 1}
-  weaponRoot: {fileID: 3381970543863594127}
+  weaponRoot: {fileID: 8864694871800317236}
   weaponMuzzle: {fileID: 8334323006752503713}
   shootType: 1
   projectilePrefab: {fileID: 528546716365072993, guid: 16d1e6293d0cb064685ded2837437569,
@@ -660,12 +660,6 @@ GameObject:
 --- !u!4 &8092521752071167886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8da42d4647ca4043bce3db00ca49659,
-    type: 3}
-  m_PrefabInstance: {fileID: 8630252399999563877}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3381970543863594127 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -2797864980895152918, guid: a8da42d4647ca4043bce3db00ca49659,
     type: 3}
   m_PrefabInstance: {fileID: 8630252399999563877}
   m_PrefabAsset: {fileID: 0}
