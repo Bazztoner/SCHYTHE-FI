@@ -27,7 +27,62 @@ ModelImporter:
   - first:
       74: -4018963934791170133
     second: shoot_missile_last
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: $0b_battleshipo
+    second: {fileID: 2100000, guid: d237df85c8cb3984aad0476e099d72d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CSO_HighQ_Hand__Long_512
+    second: {fileID: 2100000, guid: 66b88eb600c7e8e4e848a986fb35c840, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battleship00_01_v
+    second: {fileID: 2100000, guid: 70f5b67ce96859d4dbffa2174a635703, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battleship00_01_v1
+    second: {fileID: 2100000, guid: 94426573e28267e4f9d73f23c0498456, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battleship00_02_v
+    second: {fileID: 2100000, guid: 9cc71c3e620dea84c9d8758809d26fe6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battleship00_02_v1
+    second: {fileID: 2100000, guid: 73be76c1f3f15354fb463491534b56e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battleship00_02_v2
+    second: {fileID: 2100000, guid: ef69b5fd91398ab4a99ef194cbf7ea9b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battleship01_01_v
+    second: {fileID: 2100000, guid: 05fec64480a7e734b9ecc96b15ca5315, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battleship01_01_v1
+    second: {fileID: 2100000, guid: 7dd6e88f91ac6fe4ebc5b40a0cbe1b24, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: battleship01_02_v
+    second: {fileID: 2100000, guid: 4e64b5498006bd74fbf0e1ddd8dd40b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: led01
+    second: {fileID: 2100000, guid: d769c72b63888374e9ca3dbe70298d17, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -14,10 +14,8 @@ GameObject:
   - component: {fileID: 6867404450943131836}
   - component: {fileID: 5542020336735652036}
   - component: {fileID: 1203337828444365110}
-  - component: {fileID: 2223418409092269418}
-  - component: {fileID: 6841512634174719543}
   m_Layer: 0
-  m_Name: Projectile_Disc
+  m_Name: Projectile_Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106790115311484953}
-  m_Mesh: {fileID: 4300002, guid: ff6da3339a124244295a978acc07e2d6, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 2088048b891918d4c8111a936d36e8ba, type: 3}
 --- !u!23 &106790115311484954
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60,10 +58,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bbfadc30c17002448a215c8857fefa7a, type: 2}
+  - {fileID: 2100000, guid: 2088048b891918d4c8111a936d36e8ba, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,6 +70,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   root: {fileID: 106790115311484948}
   tip: {fileID: 106790115311484948}
   maxLifeTime: 5
-  impactVFX: {fileID: 4260779743739990948, guid: bbe6bdea7cd168e428a309e9eb2e728b,
+  impactVFX: {fileID: 8950624839484268180, guid: 45ce85b82008be84287f2c7e5bf07647,
     type: 3}
   impactVFXLifetime: 5
   impactVFXSpawnOffset: 0.1
@@ -119,11 +119,11 @@ MonoBehaviour:
   hittableLayers:
     serializedVersion: 2
     m_Bits: 3383
-  speed: 30
-  gravityDownAcceleration: 10
+  speed: 50
+  gravityDownAcceleration: 1
   trajectoryCorrectionDistance: -1
   inheritWeaponVelocity: 0
-  damage: 40
+  damage: 250
   areaOfDamage: {fileID: 1203337828444365110}
   radiusColor: {r: 0, g: 1, b: 1, a: 0.49803922}
 --- !u!114 &1203337828444365110
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0244d6b9e98532469c7be0732490a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaOfEffectDistance: 2.5
+  areaOfEffectDistance: 6.66
   damageRatioOverDistance:
     serializedVersion: 2
     m_Curve:
@@ -152,6 +152,24 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.055853922
     - serializedVersion: 3
+      time: 0.36792794
+      value: 0.7072611
+      inSlope: -1.2429179
+      outSlope: -1.2429179
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1151939
+    - serializedVersion: 3
+      time: 0.85940874
+      value: 0.5056717
+      inSlope: -0.81100786
+      outSlope: -0.81100786
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.21578076
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 0.9989259
       value: 0.4009434
       inSlope: -2.0493684
@@ -164,52 +182,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   areaOfEffectColor: {r: 0.2, g: 0, b: 0, a: 0.5019608}
---- !u!114 &2223418409092269418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106790115311484953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3614fdf64d310f44ba678e99290fa20a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage:
-    min: 80
-    max: 350
-  radius:
-    min: 0.2
-    max: 0.2
-  speed:
-    min: 20
-    max: 40
-  gravityDownAcceleration:
-    min: 10
-    max: 3
-  areaOfEffectDistance:
-    min: 5
-    max: 5
---- !u!114 &6841512634174719543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106790115311484953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da2b0de22b1558e4caa11aa3696e87fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chargingObject: {fileID: 106790115311484953}
-  scale:
-    min: {x: 0.5, y: 0.5, z: 0.5}
-    max: {x: 0.8, y: 0.8, z: 0.8}
-  color:
-    min: {r: 0, g: 1, b: 0.033423424, a: 1}
-    max: {r: 0, g: 12.996038, b: 0.356754, a: 1}
 --- !u!1 &1945832826066038730
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,10 +228,11 @@ TrailRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b4f29d2b8d27495478384372a6e55304, type: 2}
+  - {fileID: 2100000, guid: 530af3a8082ffb14897ac6b74259b8a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -267,6 +240,7 @@ TrailRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -309,8 +283,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.026268482, g: 1, b: 0, a: 1}
-      key1: {r: 0.021574982, g: 0.26415092, b: 0, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 0.18867922, g: 0.025809899, b: 0.08907076, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
