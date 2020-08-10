@@ -368,7 +368,9 @@ public class WeaponController : MonoBehaviour
         // Trigger attack animation if there is any
         if (weaponAnimator)
         {
-            weaponAnimator.SetTrigger(k_AnimAttackParameter);
+            //fuck triggers
+            //weaponAnimator.SetTrigger(k_AnimAttackParameter);
+            weaponAnimator.CrossFadeInFixedTime("Shoot", .1f);
         }
 
         // Callback on shoot

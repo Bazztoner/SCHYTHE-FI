@@ -142,7 +142,7 @@ MonoBehaviour:
   maxChargeDuration: 2
   ammoUsedOnStartCharge: 1
   ammoUsageRateWhileCharging: 2
-  weaponAnimator: {fileID: 0}
+  weaponAnimator: {fileID: 5140603491346036598}
   muzzleFlashPrefab: {fileID: 748781637555137343, guid: 9f671b22f25370048a18fb1f821294ec,
     type: 3}
   unparentMuzzleFlash: 0
@@ -437,6 +437,25 @@ Transform:
   m_Father: {fileID: 2225486910712267856}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5140603491346036598
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8864694871800317236}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: cc24aa4152e547c4ea76998732eb66a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9137725452049529592
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +651,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8da42d4647ca4043bce3db00ca49659, type: 3}
+--- !u!1 &8864694871800317236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a8da42d4647ca4043bce3db00ca49659,
+    type: 3}
+  m_PrefabInstance: {fileID: 8630252399999563877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8092521752071167886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8da42d4647ca4043bce3db00ca49659,
