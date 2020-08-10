@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 528546716365072993}
   - component: {fileID: 8924682559891268397}
   m_Layer: 0
-  m_Name: Projectile_Railcannon
+  m_Name: Projectile_Machinegun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   gravityDownAcceleration: 42
   trajectoryCorrectionDistance: -1
   inheritWeaponVelocity: 0
-  damage: 3
+  damage: 5
   areaOfDamage: {fileID: 0}
   radiusColor: {r: 0.20283496, g: 0.735849, b: 0, a: 1}
 --- !u!1 &5564024855854763701

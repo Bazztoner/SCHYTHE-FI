@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad90ba0b1477764da373f5ec01a8cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Blaster
+  weaponName: Machinegun
   weaponIcon: {fileID: 21300000, guid: 3c187e19c32c13542ba8a0c1a3a88ece, type: 3}
   crosshairDataDefault:
     crosshairSprite: {fileID: 21300000, guid: e881aa18189b12f4e915fc5b14ddc421, type: 3}
@@ -129,7 +129,7 @@ MonoBehaviour:
   shootType: 1
   projectilePrefab: {fileID: 528546716365072993, guid: 16d1e6293d0cb064685ded2837437569,
     type: 3}
-  delayBetweenShots: 0.02
+  delayBetweenShots: 0.05
   bulletSpreadAngle: 2.3
   bulletsPerShot: 1
   recoilForce: 1.85
@@ -137,7 +137,7 @@ MonoBehaviour:
   aimOffset: {x: 0, y: 0.012, z: 0}
   ammoReloadRate: 99
   ammoReloadDelay: 0.75
-  maxAmmo: 99
+  maxAmmo: 75
   automaticReleaseOnCharged: 0
   maxChargeDuration: 2
   ammoUsedOnStartCharge: 1
