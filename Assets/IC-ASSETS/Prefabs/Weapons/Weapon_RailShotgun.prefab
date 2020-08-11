@@ -114,7 +114,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 748781637555137343, guid: 3f5b545b9a1e74c418b061bba5bb9e2c,
     type: 3}
   unparentMuzzleFlash: 0
-  shootSFX: {fileID: 8300000, guid: be87267ec54c5264daffd2ffeb91d6a7, type: 3}
+  shootSFX: {fileID: 8300000, guid: e83f87c5da8d8a04185757102ed1f0d9, type: 3}
   changeWeaponSFX: {fileID: 8300000, guid: 7b83d61917ac1224f942a0609b1221f2, type: 3}
   useContinuousShootSound: 0
   continuousShootStartSFX: {fileID: 0}
@@ -154,7 +154,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.6
-  m_Pitch: 1
+  m_Pitch: 1.67
   Loop: 0
   Mute: 0
   Spatialize: 0

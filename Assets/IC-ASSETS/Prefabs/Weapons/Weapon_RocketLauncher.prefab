@@ -101,7 +101,7 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 8950624839484268180, guid: 45ce85b82008be84287f2c7e5bf07647,
     type: 3}
   unparentMuzzleFlash: 0
-  shootSFX: {fileID: 8300000, guid: 0cacf9e8e361eb24e9101b28422f7c08, type: 3}
+  shootSFX: {fileID: 8300000, guid: ed263317f59adde4786f7a762ca981b3, type: 3}
   changeWeaponSFX: {fileID: 8300000, guid: 6f3e0904bbbace745bdef08cdbcdfec0, type: 3}
   useContinuousShootSound: 0
   continuousShootStartSFX: {fileID: 0}

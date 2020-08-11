@@ -202,7 +202,7 @@ MonoBehaviour:
   animator: {fileID: 4227686814039283373}
   aimRotationSharpness: 5
   lookAtRotationSharpness: 2.5
-  detectionFireDelay: 1.1
+  detectionFireDelay: 1.5
   aimingTransitionBlendTime: 1
   randomHitSparks:
   - {fileID: 5404058045411655592}
@@ -319,7 +319,7 @@ MonoBehaviour:
   detectionSourcePoint: {fileID: 7962871965276212333}
   detectionRange: 20
   attackRange: 10
-  knownTargetTimeout: 12
+  knownTargetTimeout: 1
   animator: {fileID: 0}
 --- !u!1 &3313055002718567669
 GameObject:
@@ -461,7 +461,7 @@ MonoBehaviour:
   shootType: 1
   projectilePrefab: {fileID: 528546716365072993, guid: 98eaea164edde384cb57eba6e269d86d,
     type: 3}
-  delayBetweenShots: 0.1
+  delayBetweenShots: 0.2
   bulletSpreadAngle: 6
   bulletsPerShot: 1
   recoilForce: 1
@@ -477,7 +477,7 @@ MonoBehaviour:
   weaponAnimator: {fileID: 0}
   muzzleFlashPrefab: {fileID: 0}
   unparentMuzzleFlash: 0
-  shootSFX: {fileID: 8300000, guid: a56e3c9f90e17894eb1625f603eceb54, type: 3}
+  shootSFX: {fileID: 8300000, guid: b54c38235b78f07488167ea11bee9615, type: 3}
   changeWeaponSFX: {fileID: 0}
   useContinuousShootSound: 0
   continuousShootStartSFX: {fileID: 0}
