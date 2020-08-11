@@ -14,7 +14,8 @@ public class EnemyTurret : MonoBehaviour
     public Animator animator;
     public float aimRotationSharpness = 5f;
     public float lookAtRotationSharpness = 2.5f;
-    public float detectionFireDelay = 1f;
+    public float detectionFireDelayMin = 1f;
+    public float detectionFireDelayMax = 3f;
     public float aimingTransitionBlendTime = 1f;
 
     [Tooltip("The random hit damage effects")]
@@ -73,7 +74,7 @@ public class EnemyTurret : MonoBehaviour
         switch (aiState)
         {
             case AIState.Attack:
-                bool mustShoot = Time.time > m_TimeStartedDetection + detectionFireDelay;
+                bool mustShoot = Time.time > m_TimeStartedDetection + Random.Range(detectionFireDelayMin, detectionFireDelayMax);
                 // Calculate the desired rotation of our turret (aim at target)
                 Vector3 directionToTarget = (m_EnemyController.knownDetectedTarget.transform.position - turretAimPoint.position).normalized;
                 Quaternion offsettedTargetRotation = Quaternion.LookRotation(directionToTarget) * m_RotationWeaponForwardToPivot;

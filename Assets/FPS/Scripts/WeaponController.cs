@@ -97,6 +97,10 @@ public class WeaponController : MonoBehaviour
     private AudioSource m_continuousShootAudioSource = null;
     private bool m_wantsToShoot = false;
 
+    [Header("Audio Pitch Randomizer")]
+    public bool randomizePitch;
+    public float minPitch, maxPitch;
+
     public UnityAction onShoot;
 
     float m_CurrentAmmo;
@@ -134,6 +138,8 @@ public class WeaponController : MonoBehaviour
             m_continuousShootAudioSource.outputAudioMixerGroup = AudioUtility.GetAudioGroup(AudioUtility.AudioGroups.WeaponShoot);
             m_continuousShootAudioSource.loop = true;
         }
+
+        if (randomizePitch) m_ShootAudioSource.pitch = Random.Range(minPitch, maxPitch);
     }
 
     void Update()

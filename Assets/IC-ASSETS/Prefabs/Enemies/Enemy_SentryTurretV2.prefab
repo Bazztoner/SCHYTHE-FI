@@ -202,7 +202,8 @@ MonoBehaviour:
   animator: {fileID: 4227686814039283373}
   aimRotationSharpness: 5
   lookAtRotationSharpness: 2.5
-  detectionFireDelay: 1.5
+  detectionFireDelayMin: 1
+  detectionFireDelayMax: 3
   aimingTransitionBlendTime: 1
   randomHitSparks:
   - {fileID: 5404058045411655592}
@@ -462,7 +463,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 528546716365072993, guid: 98eaea164edde384cb57eba6e269d86d,
     type: 3}
   delayBetweenShots: 0.2
-  bulletSpreadAngle: 6
+  bulletSpreadAngle: 8
   bulletsPerShot: 1
   recoilForce: 1
   aimZoomRatio: 1
@@ -483,6 +484,9 @@ MonoBehaviour:
   continuousShootStartSFX: {fileID: 0}
   continuousShootLoopSFX: {fileID: 0}
   continuousShootEndSFX: {fileID: 0}
+  randomizePitch: 1
+  minPitch: 0.6
+  maxPitch: 1.6
 --- !u!82 &3118835429207937253
 AudioSource:
   m_ObjectHideFlags: 0
@@ -496,7 +500,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -540,7 +544,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5
+      value: 0.88
       inSlope: 0
       outSlope: 0
       tangentMode: 0
