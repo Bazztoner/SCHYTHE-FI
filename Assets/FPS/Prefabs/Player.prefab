@@ -407,9 +407,9 @@ MonoBehaviour:
   footstepSFXFrequency: 0.3
   footstepSFXFrequencyWhileSprinting: 0.2
   footstepSFX: {fileID: 8300000, guid: f404f8d3c2a4b4f48989fb1120e78fb8, type: 3}
-  jumpSFX: {fileID: 8300000, guid: 13b59a14d34add64d84a623867546ff1, type: 3}
-  landSFX: {fileID: 8300000, guid: d0f1afed8fa916244af6ca73579ded67, type: 3}
-  fallDamageSFX: {fileID: 8300000, guid: ef980d09b569380459e609fe90ef1db2, type: 3}
+  jumpSFX: {fileID: 8300000, guid: 9b9fd19e959b9f44683f7915885d9855, type: 3}
+  landSFX: {fileID: 8300000, guid: d91f9943e458071418db58b20359fd96, type: 3}
+  fallDamageSFX: {fileID: 8300000, guid: e7b84e757657d174c84e4a4595d2214e, type: 3}
   recievesFallDamage: 1
   minSpeedForFallDamage: 20
   maxSpeedForFallDamage: 40
@@ -442,8 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b4f98e62f1d104f8658bba08e5d56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingWeapons:
-  - {fileID: 8323776800172828795, guid: b318fabc73446b746a1005cede0c4ceb, type: 3}
+  startingWeapons: []
   weaponCamera: {fileID: 2286125971047457827}
   weaponParentSocket: {fileID: 3891163784698469781}
   defaultWeaponPosition: {fileID: 4354021110288562838}
