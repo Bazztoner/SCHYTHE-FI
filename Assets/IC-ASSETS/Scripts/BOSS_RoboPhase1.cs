@@ -322,5 +322,7 @@ public class BOSS_RoboPhase1 : MonoBehaviour
         m_EnemyController.m_NavMeshAgent.enabled = false;
         runSpeedMultipier = 0;
         aiState = AIState.Dead;
+
+        this.enabled = false;
     }
 }

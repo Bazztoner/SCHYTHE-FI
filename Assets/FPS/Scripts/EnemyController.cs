@@ -367,6 +367,9 @@ public class EnemyController : MonoBehaviour
 
         if (robotComponent != null) robotComponent.HandleDeath();
 
+        this.enabled = false;
+        m_DetectionModule.enabled = false;
+
         // this will call the OnDestroy function
         Destroy(gameObject, deathDuration);
     }
