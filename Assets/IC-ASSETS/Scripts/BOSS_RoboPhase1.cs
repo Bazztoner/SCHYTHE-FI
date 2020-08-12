@@ -69,6 +69,8 @@ public class BOSS_RoboPhase1 : MonoBehaviour
     const string _flinchAnim = "flinch";
     string[] _deathAnims = new string[] { "dieback1", "diebackwards", "dieforward", "diegutshot", "diesimple" };
 
+    const string _runAnParam = "run", _startAnParam = "start", _walkAnParam = "walk", _damagedAnParam = "damaged";
+
     void Start()
     {
         m_EnemyController = GetComponent<EnemyController>();
@@ -89,18 +91,23 @@ public class BOSS_RoboPhase1 : MonoBehaviour
         m_AudioSource.clip = MovementSound;
         m_AudioSource.Play();
 
-        Invoke("StartPatrol", 2f);
+        animator.SetTrigger(_startAnParam);
+        Invoke("StartPatrol", 3f);
     }
 
     void StartPatrol()
     {
+        animator.SetBool(_walkAnParam, true);
+        animator.SetBool(_runAnParam, false);
+        //animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
         aiState = AIState.Patrol;
-        animator.CrossFadeInFixedTime(_spawnAnim, .1f);
     }
 
     void Update()
     {
         if (isDead) return;
+        if (m_EnemyController.m_Health.isCritical()) animator.SetBool(_damagedAnParam, true);
+
         UpdateAIStateTransitions();
         UpdateCurrentAIState();
 
@@ -119,46 +126,51 @@ public class BOSS_RoboPhase1 : MonoBehaviour
             case AIState.Idle:
                 break;
             case AIState.Follow:
-                var randomAttack = Random.Range(0f, 1f);
+                if (!_attackOnCooldown)
+                {
+                    var randomAttack = Random.Range(0f, 1f);
 
-                //default is gun
-                AttackTypes pickedAttack = AttackTypes.Gun;
-                AIState nextAttack = AIState.ShootGun;
-                if (randomAttack < rocketChance)
-                {
-                    pickedAttack = AttackTypes.Rocket;
-                    nextAttack = AIState.ShootRocket;
-                }
-                else if (randomAttack > rocketChance && randomAttack < grenadeChance)
-                {
-                    pickedAttack = AttackTypes.Grenade;
-                    nextAttack = AIState.ThrowGrenade;
-                }
+                    //default is gun
+                    AttackTypes pickedAttack = AttackTypes.Gun;
+                    AIState nextAttack = AIState.ShootGun;
+                    if (randomAttack < rocketChance)
+                    {
+                        pickedAttack = AttackTypes.Rocket;
+                        nextAttack = AIState.ShootRocket;
+                    }
+                    else if (randomAttack > rocketChance && randomAttack < grenadeChance)
+                    {
+                        pickedAttack = AttackTypes.Grenade;
+                        nextAttack = AIState.ThrowGrenade;
+                    }
 
-                //Perdón Wain
-                //Perdón Row
-                //Los quiero muchísimo
-                switch (pickedAttack)
-                {
-                    case AttackTypes.Gun:
-                        m_EnemyController.m_DetectionModule.attackRange = shootGunRange;
-                        break;
-                    case AttackTypes.Grenade:
-                        m_EnemyController.m_DetectionModule.attackRange = throwGrenadeRange;
-                        break;
-                    case AttackTypes.Rocket:
-                        m_EnemyController.m_DetectionModule.attackRange = shootRocketRange;
-                        break;
-                    default:
-                        m_EnemyController.m_DetectionModule.attackRange = shootGunRange;
-                        break;
-                }
+                    //Perdón Wain
+                    //Perdón Row
+                    //Los quiero muchísimo
+                    switch (pickedAttack)
+                    {
+                        case AttackTypes.Gun:
+                            m_EnemyController.m_DetectionModule.attackRange = shootGunRange;
+                            break;
+                        case AttackTypes.Grenade:
+                            m_EnemyController.m_DetectionModule.attackRange = throwGrenadeRange;
+                            break;
+                        case AttackTypes.Rocket:
+                            m_EnemyController.m_DetectionModule.attackRange = shootRocketRange;
+                            break;
+                        default:
+                            m_EnemyController.m_DetectionModule.attackRange = shootGunRange;
+                            break;
+                    }
 
-                // Transition to attack when there is a line of sight to the target
-                if (m_EnemyController.isSeeingTarget && m_EnemyController.isTargetInAttackRange)
-                {
-                    aiState = nextAttack;
-                    m_EnemyController.SetNavDestination(transform.position);
+                    // Transition to attack when there is a line of sight to the target
+                    if (m_EnemyController.isSeeingTarget && m_EnemyController.isTargetInAttackRange)
+                    {
+                        aiState = nextAttack;
+                        m_EnemyController.SetNavDestination(transform.position);
+                        animator.SetBool(_walkAnParam, false);
+                        animator.SetBool(_runAnParam, false);
+                    }
                 }
                 break;
         }
@@ -170,12 +182,18 @@ public class BOSS_RoboPhase1 : MonoBehaviour
         var currentDuration = 0f;
         var instruction = new WaitForEndOfFrame();
 
+        _attackOnCooldown = true;
+
         while (true)
         {
             if (currentDuration > randomDuration || !m_EnemyController.m_DetectionModule.isSeeingTarget)
             {
+                StartCoroutine(AttackCooldownCoroutine(attackCooldown / 2));
+
+                animator.CrossFadeInFixedTime("combatidle", .1f);
                 aiState = AIState.Follow;
-                animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
+                animator.SetBool(_runAnParam, true);
+                animator.SetBool(_walkAnParam, false);
                 yield break;
             }
 
@@ -191,18 +209,40 @@ public class BOSS_RoboPhase1 : MonoBehaviour
     /// <returns></returns>
     IEnumerator AttackSingleCouroutine(float t)
     {
+        _attackOnCooldown = true;
         yield return new WaitForSeconds(t);
 
+        StartCoroutine(AttackCooldownCoroutine(attackCooldown));
+
+        animator.CrossFadeInFixedTime("combatidle", .1f);
         aiState = AIState.Follow;
-        animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
+        animator.SetBool(_runAnParam, true);
+        animator.SetBool(_walkAnParam, false);
+        //animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
     }
 
     IEnumerator FlinchCouroutine(float t)
     {
+        _attackOnCooldown = true;
         yield return new WaitForSeconds(t);
 
+        //half attack cooldown because balance
+        StartCoroutine(AttackCooldownCoroutine(attackCooldown / 2));
+        
+        animator.CrossFadeInFixedTime("combatidle", .1f);
         aiState = AIState.Follow;
-        animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
+        animator.SetBool(_runAnParam, true);
+        animator.SetBool(_walkAnParam, false);
+        //animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
+    }
+
+    IEnumerator AttackCooldownCoroutine(float t)
+    {
+        _attackOnCooldown = true;
+
+        yield return new WaitForSeconds(t);
+
+        _attackOnCooldown = false;
     }
 
     string GetMovementAnim(AIState stateToChangeTo)
@@ -217,26 +257,34 @@ public class BOSS_RoboPhase1 : MonoBehaviour
         switch (aiState)
         {
             case AIState.Patrol:
+                animator.SetBool(_runAnParam, false);
+                animator.SetBool(_walkAnParam, true);
                 m_EnemyController.UpdatePathDestination();
                 m_EnemyController.SetNavDestination(m_EnemyController.GetDestinationOnPath());
                 break;
             case AIState.Follow:
-                m_EnemyController.SetNavDestination(m_EnemyController.knownDetectedTarget.transform.position);
-                m_EnemyController.OrientTowards(m_EnemyController.knownDetectedTarget.transform.position);
-                m_EnemyController.OrientWeaponsTowards(m_EnemyController.knownDetectedTarget.transform.position);
+                animator.SetBool(_runAnParam, true);
+                animator.SetBool(_walkAnParam, false);
+                if (m_EnemyController.knownDetectedTarget != null)
+                {
+                    m_EnemyController.SetNavDestination(m_EnemyController.knownDetectedTarget.transform.position);
+                    m_EnemyController.OrientTowards(m_EnemyController.knownDetectedTarget.transform.position);
+                    m_EnemyController.OrientWeaponsTowards(m_EnemyController.knownDetectedTarget.transform.position);
+                }
                 break;
             case AIState.ShootGun:
             case AIState.ShootRocket:
             case AIState.ThrowGrenade:
-                if (Vector3.Distance(m_EnemyController.knownDetectedTarget.transform.position, m_EnemyController.m_DetectionModule.detectionSourcePoint.position)
+                //NO QUIERO QUE SE MUEVA CUANDO ATACA
+                /*if (Vector3.Distance(m_EnemyController.knownDetectedTarget.transform.position, m_EnemyController.m_DetectionModule.detectionSourcePoint.position)
                     >= (attackStopDistanceRatio * m_EnemyController.m_DetectionModule.attackRange))
                 {
                     m_EnemyController.SetNavDestination(m_EnemyController.knownDetectedTarget.transform.position);
                 }
                 else
-                {
-                    m_EnemyController.SetNavDestination(transform.position);
-                }
+                {*/
+                //}
+                m_EnemyController.SetNavDestination(transform.position);
                 m_EnemyController.OrientTowards(m_EnemyController.knownDetectedTarget.transform.position);
                 m_EnemyController.TryAttack(m_EnemyController.knownDetectedTarget.transform.position);
                 break;
@@ -277,19 +325,37 @@ public class BOSS_RoboPhase1 : MonoBehaviour
             AudioUtility.CreateSFX(onDetectSFX, transform.position, AudioUtility.AudioGroups.EnemyDetection, 1f);
         }
 
-        animator.CrossFadeInFixedTime(_shootGunAnim, .1f);
+        animator.SetBool(_runAnParam, true);
+        animator.SetBool(_walkAnParam, false);
+
+        //animator.CrossFadeInFixedTime(_shootGunAnim, .1f);
     }
 
     void OnLostTarget()
     {
         aiState = aiState == AIState.Follow ? AIState.Patrol : AIState.Follow;
 
+        if (aiState == AIState.Follow)
+        {
+            aiState = AIState.Patrol;
+            animator.SetBool(_runAnParam, false);
+            animator.SetBool(_walkAnParam, true);
+        }
+        else
+        {
+            aiState = AIState.Follow;
+            animator.SetBool(_runAnParam, true);
+            animator.SetBool(_walkAnParam, false);
+        }
+
+
         for (int i = 0; i < onDetectVFX.Length; i++)
         {
             onDetectVFX[i].Stop();
         }
 
-        animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
+
+        //animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
     }
 
     void OnDamaged()
@@ -322,6 +388,8 @@ public class BOSS_RoboPhase1 : MonoBehaviour
         m_EnemyController.m_NavMeshAgent.enabled = false;
         runSpeedMultipier = 0;
         aiState = AIState.Dead;
+        animator.SetBool(_runAnParam, false);
+        animator.SetBool(_walkAnParam, false);
 
         this.enabled = false;
     }
