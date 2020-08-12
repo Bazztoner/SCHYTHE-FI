@@ -273,8 +273,21 @@ public class BOSS_RoboPhase1 : MonoBehaviour
                 }
                 break;
             case AIState.ShootGun:
+                m_EnemyController.SetNavDestination(transform.position);
+                m_EnemyController.OrientTowards(m_EnemyController.knownDetectedTarget.transform.position);
+                m_EnemyController.TryAttack(m_EnemyController.knownDetectedTarget.transform.position, "Weapon_ShootBoss");
+                break;
             case AIState.ShootRocket:
+                m_EnemyController.SetNavDestination(transform.position);
+                m_EnemyController.OrientTowards(m_EnemyController.knownDetectedTarget.transform.position);
+                m_EnemyController.TryAttack(m_EnemyController.knownDetectedTarget.transform.position, "Weapon_RocketBoss");
+                break;
             case AIState.ThrowGrenade:
+                m_EnemyController.SetNavDestination(transform.position);
+                m_EnemyController.OrientTowards(m_EnemyController.knownDetectedTarget.transform.position);
+                m_EnemyController.TryAttack(m_EnemyController.knownDetectedTarget.transform.position + Vector3.up, "Weapon_GrenadeBoss");
+                break;
+
                 //NO QUIERO QUE SE MUEVA CUANDO ATACA
                 /*if (Vector3.Distance(m_EnemyController.knownDetectedTarget.transform.position, m_EnemyController.m_DetectionModule.detectionSourcePoint.position)
                     >= (attackStopDistanceRatio * m_EnemyController.m_DetectionModule.attackRange))
@@ -284,10 +297,6 @@ public class BOSS_RoboPhase1 : MonoBehaviour
                 else
                 {*/
                 //}
-                m_EnemyController.SetNavDestination(transform.position);
-                m_EnemyController.OrientTowards(m_EnemyController.knownDetectedTarget.transform.position);
-                m_EnemyController.TryAttack(m_EnemyController.knownDetectedTarget.transform.position);
-                break;
         }
     }
 

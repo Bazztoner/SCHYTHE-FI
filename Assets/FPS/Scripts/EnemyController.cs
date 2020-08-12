@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -84,7 +86,6 @@ public class EnemyController : MonoBehaviour
     public UnityAction onDetectedTarget;
     public UnityAction onLostTarget;
     public UnityAction onDamaged;
-
 
     List<RendererIndexData> m_BodyRenderers = new List<RendererIndexData>();
     MaterialPropertyBlock m_BodyFlashMaterialPropertyBlock;
@@ -429,6 +430,32 @@ public class EnemyController : MonoBehaviour
         return didFire;
     }
 
+    public bool TryAttack(Vector3 enemyPosition, string weaponToUse)
+    {
+        if (m_GameFlowManager.gameIsEnding)
+            return false;
+
+        OrientWeaponsTowards(enemyPosition);
+
+        //swap to weapon
+        var controllerNewWeapon = m_Weapons.Where(x => x.gameObject.name == weaponToUse).FirstOrDefault();
+        if (controllerNewWeapon != null)
+        {
+            var indexOfNewWeapon = Array.IndexOf(m_Weapons, controllerNewWeapon);
+            SetCurrentWeapon(indexOfNewWeapon);
+        }
+
+        // Shoot the weapon
+        bool didFire = GetCurrentWeapon().HandleShootInputs(false, true, false);
+
+        if (didFire && onAttack != null)
+        {
+            onAttack.Invoke();
+        }
+
+        return didFire;
+    }
+
     public bool TryDropItem()
     {
         if (dropRate == 0 || lootPrefab == null)
@@ -436,7 +463,7 @@ public class EnemyController : MonoBehaviour
         else if (dropRate == 1)
             return true;
         else
-            return (Random.value <= dropRate);
+            return (UnityEngine.Random.value <= dropRate);
     }
 
     void FindAndInitializeAllWeapons()
