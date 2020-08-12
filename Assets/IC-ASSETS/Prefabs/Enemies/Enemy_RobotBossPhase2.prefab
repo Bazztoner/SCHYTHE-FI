@@ -146,9 +146,9 @@ MonoBehaviour:
   PitchDistortionMovementSpeed:
     min: 0
     max: 0
-  minShootingTime: 3
-  maxShootingTime: 5
-  attackCooldown: 2.5
+  minShootingTime: 1.5
+  maxShootingTime: 3
+  attackCooldown: 3
   flinchChance: 0.35
   runSpeedMultipier: 5
   walkSpeed: 1.5
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27364eefd6dd0341ba72a3bfc0d9727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 850
+  maxHealth: 1350
   criticalHealthRatio: 0.3
 --- !u!114 &3464315327790461765
 MonoBehaviour:
@@ -961,7 +961,7 @@ PrefabInstance:
     - target: {fileID: 5053425171903918343, guid: 267cf7c6851f1f54b93f1e6897b62e2e,
         type: 3}
       propertyPath: useContinuousShootSound
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5053425171903918343, guid: 267cf7c6851f1f54b93f1e6897b62e2e,
         type: 3}
@@ -981,7 +981,27 @@ PrefabInstance:
     - target: {fileID: 5053425171903918343, guid: 267cf7c6851f1f54b93f1e6897b62e2e,
         type: 3}
       propertyPath: randomizePitch
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053425171903918343, guid: 267cf7c6851f1f54b93f1e6897b62e2e,
+        type: 3}
+      propertyPath: bulletSpreadAngle
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053425171903918343, guid: 267cf7c6851f1f54b93f1e6897b62e2e,
+        type: 3}
+      propertyPath: shootSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: ce5fc7f45e632594fbf43075b6460f93, type: 3}
+    - target: {fileID: 5053425171903918343, guid: 267cf7c6851f1f54b93f1e6897b62e2e,
+        type: 3}
+      propertyPath: minPitch
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053425171903918343, guid: 267cf7c6851f1f54b93f1e6897b62e2e,
+        type: 3}
+      propertyPath: maxPitch
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 267cf7c6851f1f54b93f1e6897b62e2e, type: 3}

@@ -249,7 +249,7 @@ public class BOSS_RoboPhase2 : MonoBehaviour
         animator.CrossFadeInFixedTime(_deathAnims[Random.Range(0, _deathAnims.Length)], .1f);
         isDead = true;
 
-        GetComponent<AudioSource>().PlayOneShot(deathSFX);
+        GetComponent<AudioSource>().PlayOneShot(deathSFX);  
 
         m_EnemyController.m_NavMeshAgent.velocity = Vector3.zero;
         m_EnemyController.m_NavMeshAgent.speed = 0f;
