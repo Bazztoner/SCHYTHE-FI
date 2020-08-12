@@ -71,6 +71,8 @@ public class BOSS_RoboPhase1 : MonoBehaviour
 
     const string _runAnParam = "run", _startAnParam = "start", _walkAnParam = "walk", _damagedAnParam = "damaged";
 
+    public AudioClip deathSFX;
+
     void Start()
     {
         m_EnemyController = GetComponent<EnemyController>();
@@ -387,6 +389,9 @@ public class BOSS_RoboPhase1 : MonoBehaviour
     {
         animator.CrossFadeInFixedTime(_deathAnims[Random.Range(0, _deathAnims.Length)], .1f);
         isDead = true;
+
+        GetComponent<AudioSource>().PlayOneShot(deathSFX);
+
         m_EnemyController.m_NavMeshAgent.velocity = Vector3.zero;
         m_EnemyController.m_NavMeshAgent.speed = 0f;
         m_EnemyController.m_NavMeshAgent.isStopped = true;
