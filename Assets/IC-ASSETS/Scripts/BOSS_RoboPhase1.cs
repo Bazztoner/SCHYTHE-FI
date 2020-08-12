@@ -387,6 +387,9 @@ public class BOSS_RoboPhase1 : MonoBehaviour
 
     public void HandleDeath()
     {
+        var coll = transform.Find("HitBox").GetComponent<Collider>();
+        coll.isTrigger = true;
+
         animator.CrossFadeInFixedTime(_deathAnims[Random.Range(0, _deathAnims.Length)], .1f);
         isDead = true;
 

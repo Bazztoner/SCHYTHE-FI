@@ -364,9 +364,11 @@ public class EnemyController : MonoBehaviour
             Instantiate(lootPrefab, transform.position, Quaternion.identity);
         }
 
-        var robotComponent = GetComponentInChildren<BOSS_RoboPhase1>(true);
+        var robotComponentPhase1 = GetComponentInChildren<BOSS_RoboPhase1>(true);
+        var robotComponentPhase2 = GetComponentInChildren<BOSS_RoboPhase2>(true);
 
-        if (robotComponent != null) robotComponent.HandleDeath();
+        if (robotComponentPhase1 != null) robotComponentPhase1.HandleDeath();
+        if (robotComponentPhase2 != null) robotComponentPhase2.HandleDeath();
 
         this.enabled = false;
         m_DetectionModule.enabled = false;
