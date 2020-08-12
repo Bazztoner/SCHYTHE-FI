@@ -104,7 +104,7 @@ public class EnemyController : MonoBehaviour
     int m_PathDestinationNodeIndex;
     EnemyManager m_EnemyManager;
     ActorsManager m_ActorsManager;
-    Health m_Health;
+    [HideInInspector] public Health m_Health;
     Actor m_Actor;
     Collider[] m_SelfColliders;
     GameFlowManager m_GameFlowManager;
@@ -363,6 +363,10 @@ public class EnemyController : MonoBehaviour
             Instantiate(lootPrefab, transform.position, Quaternion.identity);
         }
 
+        var robotComponent = GetComponentInChildren<BOSS_RoboPhase1>(true);
+
+        if (robotComponent != null) robotComponent.HandleDeath();
+
         // this will call the OnDestroy function
         Destroy(gameObject, deathDuration);
     }
@@ -395,7 +399,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public bool TryAtack(Vector3 enemyPosition)
+    public bool TryAttack(Vector3 enemyPosition)
     {
         if (m_GameFlowManager.gameIsEnding)
             return false;
