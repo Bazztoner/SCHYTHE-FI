@@ -11,9 +11,10 @@ public class BOSS_ScriptedEvents : MonoBehaviour
     BOSS_RoboPhase1 _bossPhase1;
     BOSS_RoboPhase2 _bossPhase2;
 
-    public GameObject[] firstSetOfDoors;
-    public GameObject[] secondSetOfDoors;
-    public GameObject[] thirdSetOfDoors;
+    public BOSS_DynamicRoomObject[] firstSetOfDoors;
+    public BOSS_DynamicRoomObject[] secondSetOfDoors;
+    public BOSS_DynamicRoomObject finalDoor;
+    public BOSS_DynamicRoomObject[] thirdSetOfDoors;
 
     public Collider[] eventTriggers;
     byte _triggerIndex = 0;
@@ -43,7 +44,7 @@ public class BOSS_ScriptedEvents : MonoBehaviour
 
         foreach (var item in firstSetOfDoors)
         {
-            item.gameObject.SetActive(false);
+            item.ChangeActivationState(true);
         }
 
         yield return new WaitForSeconds(.5f);
@@ -57,7 +58,7 @@ public class BOSS_ScriptedEvents : MonoBehaviour
 
                 foreach (var item in secondSetOfDoors)
                 {
-                    item.gameObject.SetActive(false);
+                    item.ChangeActivationState(true);
                 }
 
                 yield break;
@@ -71,6 +72,8 @@ public class BOSS_ScriptedEvents : MonoBehaviour
     {
         eventTriggers[triggerIndex].gameObject.SetActive(false);
         if (_bossPhase1 != null) Destroy(_bossPhase1.gameObject);
+
+        finalDoor.ChangeActivationState(false);
 
         //do fucking something
         _bossPhase2 = GameObject.Instantiate(bossPhase2Prefab, bossPhase2Spawner.position, Quaternion.identity);
@@ -86,7 +89,7 @@ public class BOSS_ScriptedEvents : MonoBehaviour
                 eventTriggers[triggerIndex + 1].gameObject.SetActive(true);
                 foreach (var item in thirdSetOfDoors)
                 {
-                    item.gameObject.SetActive(false);
+                    item.ChangeActivationState(true);
                 }
                 yield break;
             }
