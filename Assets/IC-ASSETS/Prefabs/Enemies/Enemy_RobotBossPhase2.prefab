@@ -146,13 +146,14 @@ MonoBehaviour:
   PitchDistortionMovementSpeed:
     min: 0
     max: 0
-  minShootingTime: 1.5
-  maxShootingTime: 3
-  attackCooldown: 3
-  flinchChance: 0.35
-  runSpeedMultipier: 5
-  walkSpeed: 1.5
-  shootGunRange: 17
+  minShootingTime: 2
+  maxShootingTime: 4
+  attackCooldown: 2
+  flinchChance: 0.4
+  runSpeedMultipier: 10
+  walkSpeed: 2
+  shootGunRange: 20
+  isDead: 0
   deathSFX: {fileID: 8300000, guid: 0ed5e731edb498f4489a956c5453454b, type: 3}
 --- !u!114 &6370966072896210225
 MonoBehaviour:
@@ -166,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27364eefd6dd0341ba72a3bfc0d9727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1350
+  maxHealth: 2000
   criticalHealthRatio: 0.3
 --- !u!114 &3464315327790461765
 MonoBehaviour:
@@ -194,7 +195,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.56
-  m_Speed: 1.5
+  m_Speed: 2
   m_Acceleration: 3
   avoidancePriority: 50
   m_AngularSpeed: 120

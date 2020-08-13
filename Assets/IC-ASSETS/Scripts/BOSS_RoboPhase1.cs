@@ -59,7 +59,7 @@ public class BOSS_RoboPhase1 : MonoBehaviour
 
     public float shootGunRange = 15, throwGrenadeRange = 20, shootRocketRange = 32;
 
-    bool isDead = false;
+    public bool isDead = false;
 
     const string _spawnAnim = "SPAWN";
     const string _walkAnim = "walk", _damagedWalkAnim = "limpingwalk";
@@ -127,6 +127,9 @@ public class BOSS_RoboPhase1 : MonoBehaviour
         {
             case AIState.Idle:
                 break;
+            case AIState.Patrol:
+                if (m_EnemyController.isSeeingTarget) OnDetectedTarget();
+                break;
             case AIState.Follow:
                 if (!_attackOnCooldown)
                 {
@@ -178,81 +181,6 @@ public class BOSS_RoboPhase1 : MonoBehaviour
         }
     }
 
-    IEnumerator AttackLoopCouroutine()
-    {
-        var randomDuration = Random.Range(minShootingTime, maxShootingTime);
-        var currentDuration = 0f;
-        var instruction = new WaitForEndOfFrame();
-
-        _attackOnCooldown = true;
-
-        while (true)
-        {
-            if (currentDuration > randomDuration || !m_EnemyController.m_DetectionModule.isSeeingTarget)
-            {
-                StartCoroutine(AttackCooldownCoroutine(attackCooldown / 2));
-
-                animator.CrossFadeInFixedTime("combatidle", .1f);
-                aiState = AIState.Follow;
-                animator.SetBool(_runAnParam, true);
-                animator.SetBool(_walkAnParam, false);
-                yield break;
-            }
-
-            yield return instruction;
-
-            currentDuration += Time.deltaTime;
-        }
-    }
-
-    /// <summary>
-    /// FUCKING HARDCODED TIME
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator AttackSingleCouroutine(float t)
-    {
-        _attackOnCooldown = true;
-        yield return new WaitForSeconds(t);
-
-        StartCoroutine(AttackCooldownCoroutine(attackCooldown));
-
-        animator.CrossFadeInFixedTime("combatidle", .1f);
-        aiState = AIState.Follow;
-        animator.SetBool(_runAnParam, true);
-        animator.SetBool(_walkAnParam, false);
-        //animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
-    }
-
-    IEnumerator FlinchCouroutine(float t)
-    {
-        _attackOnCooldown = true;
-        yield return new WaitForSeconds(t);
-
-        //half attack cooldown because balance
-        StartCoroutine(AttackCooldownCoroutine(attackCooldown / 2));
-        
-        animator.CrossFadeInFixedTime("combatidle", .1f);
-        aiState = AIState.Follow;
-        animator.SetBool(_runAnParam, true);
-        animator.SetBool(_walkAnParam, false);
-        //animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
-    }
-
-    IEnumerator AttackCooldownCoroutine(float t)
-    {
-        _attackOnCooldown = true;
-
-        yield return new WaitForSeconds(t);
-
-        _attackOnCooldown = false;
-    }
-
-    string GetMovementAnim(AIState stateToChangeTo)
-    {
-        if (stateToChangeTo == AIState.Follow) return m_EnemyController.m_Health.isCritical() ? _damagedRunAnim : _runAnim;
-        else return m_EnemyController.m_Health.isCritical() ? _damagedWalkAnim : _walkAnim;
-    }
-
     void UpdateCurrentAIState()
     {
         // Handle logic 
@@ -289,17 +217,80 @@ public class BOSS_RoboPhase1 : MonoBehaviour
                 m_EnemyController.OrientTowards(m_EnemyController.knownDetectedTarget.transform.position);
                 m_EnemyController.TryAttack(m_EnemyController.knownDetectedTarget.transform.position + Vector3.up, "Weapon_GrenadeBoss");
                 break;
-
-                //NO QUIERO QUE SE MUEVA CUANDO ATACA
-                /*if (Vector3.Distance(m_EnemyController.knownDetectedTarget.transform.position, m_EnemyController.m_DetectionModule.detectionSourcePoint.position)
-                    >= (attackStopDistanceRatio * m_EnemyController.m_DetectionModule.attackRange))
-                {
-                    m_EnemyController.SetNavDestination(m_EnemyController.knownDetectedTarget.transform.position);
-                }
-                else
-                {*/
-                //}
         }
+    }
+
+    IEnumerator AttackLoopCouroutine()
+    {
+        var randomDuration = Random.Range(minShootingTime, maxShootingTime);
+        var currentDuration = 0f;
+        var instruction = new WaitForEndOfFrame();
+
+        _attackOnCooldown = true;
+
+        while (true)
+        {
+            if (currentDuration > randomDuration)
+            {
+                StartCoroutine(AttackCooldownCoroutine(attackCooldown));
+
+                animator.CrossFadeInFixedTime("combatidle", .1f);
+                aiState = AIState.Follow;
+                animator.SetBool(_runAnParam, true);
+                animator.SetBool(_walkAnParam, false);
+                yield break;
+            }
+
+            yield return instruction;
+
+            currentDuration += Time.deltaTime;
+        }
+    }
+
+    /// <summary>
+    /// FUCKING HARDCODED TIME
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator AttackSingleCouroutine(float t)
+    {
+        _attackOnCooldown = true;
+        yield return new WaitForSeconds(t);
+
+        StartCoroutine(AttackCooldownCoroutine(attackCooldown));
+
+        animator.CrossFadeInFixedTime("combatidle", .1f);
+        aiState = AIState.Follow;
+        animator.SetBool(_runAnParam, true);
+        animator.SetBool(_walkAnParam, false);
+    }
+
+    IEnumerator FlinchCouroutine(float t)
+    {
+        _attackOnCooldown = true;
+        yield return new WaitForSeconds(t);
+
+        //half attack cooldown because balance
+        StartCoroutine(AttackCooldownCoroutine(attackCooldown / 2));
+
+        animator.CrossFadeInFixedTime("combatidle", .1f);
+        aiState = AIState.Follow;
+        animator.SetBool(_runAnParam, true);
+        animator.SetBool(_walkAnParam, false);
+    }
+
+    IEnumerator AttackCooldownCoroutine(float t)
+    {
+        _attackOnCooldown = true;
+
+        yield return new WaitForSeconds(t);
+
+        _attackOnCooldown = false;
+    }
+
+    string GetMovementAnim(AIState stateToChangeTo)
+    {
+        if (stateToChangeTo == AIState.Follow) return m_EnemyController.m_Health.isCritical() ? _damagedRunAnim : _runAnim;
+        else return m_EnemyController.m_Health.isCritical() ? _damagedWalkAnim : _walkAnim;
     }
 
     void OnAttack()
@@ -324,7 +315,7 @@ public class BOSS_RoboPhase1 : MonoBehaviour
 
     void OnDetectedTarget()
     {
-        if (aiState == AIState.Patrol) aiState = AIState.Follow;
+        if (aiState == AIState.Patrol /*|| aiState == AIState.Idle*/) aiState = AIState.Follow;
 
         for (int i = 0; i < onDetectVFX.Length; i++)
         {
@@ -339,7 +330,6 @@ public class BOSS_RoboPhase1 : MonoBehaviour
         animator.SetBool(_runAnParam, true);
         animator.SetBool(_walkAnParam, false);
 
-        //animator.CrossFadeInFixedTime(_shootGunAnim, .1f);
     }
 
     void OnLostTarget()
@@ -364,9 +354,6 @@ public class BOSS_RoboPhase1 : MonoBehaviour
         {
             onDetectVFX[i].Stop();
         }
-
-
-        //animator.CrossFadeInFixedTime(GetMovementAnim(aiState), .1f);
     }
 
     void OnDamaged()
