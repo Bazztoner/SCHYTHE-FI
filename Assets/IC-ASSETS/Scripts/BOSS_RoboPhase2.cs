@@ -45,7 +45,7 @@ public class BOSS_RoboPhase2 : MonoBehaviour
 
     public float shootGunRange = 15;
 
-    bool isDead = false;
+    public bool isDead = false;
 
     const string _walkAnim = "walk";
     const string _runAnim = "run";
@@ -124,7 +124,7 @@ public class BOSS_RoboPhase2 : MonoBehaviour
         {
             if (currentDuration > randomDuration)
             {
-                StartCoroutine(AttackCooldownCoroutine(attackCooldown / 2));
+                StartCoroutine(AttackCooldownCoroutine(attackCooldown));
 
                 animator.CrossFadeInFixedTime("idle", .1f);
                 aiState = AIState.Follow;
@@ -164,7 +164,7 @@ public class BOSS_RoboPhase2 : MonoBehaviour
         switch (aiState)
         {
             case AIState.Follow:
-                var closeDistanceToEnemy = Vector3.Distance(m_EnemyController.knownDetectedTarget.transform.position, transform.position) > (m_EnemyController.m_DetectionModule.attackRange * 2);
+                var closeDistanceToEnemy = Vector3.Distance(m_EnemyController.knownDetectedTarget.transform.position, transform.position) > (m_EnemyController.m_DetectionModule.attackRange * 1.3f);
 
                 if (closeDistanceToEnemy)
                 {
