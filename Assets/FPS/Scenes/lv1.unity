@@ -8007,6 +8007,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_SentryTurretV2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2015434656898269652, guid: 45be95ff85f455b4085fc44353554eb5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2015434656898269656, guid: 45be95ff85f455b4085fc44353554eb5,
         type: 3}
       propertyPath: m_LocalPosition.x
