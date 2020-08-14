@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &72172034
 Transform:
   m_ObjectHideFlags: 0
@@ -179,8 +179,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72172033}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 13.43, z: 100.39}
-  m_LocalScale: {x: 9.606114, y: 56.078773, z: 8.849233}
+  m_LocalPosition: {x: -0.083, y: 13.43, z: 100.448}
+  m_LocalScale: {x: 4.8391094, y: 56.078773, z: 6.9346123}
   m_Children: []
   m_Father: {fileID: 1828974473}
   m_RootOrder: 2
@@ -3272,6 +3272,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickup_RailShotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 5391986374566301945, guid: e2798c6723b671b409a00213c966c2c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2798c6723b671b409a00213c966c2c1, type: 3}
 --- !u!1001 &574902630
@@ -3594,7 +3599,7 @@ PrefabInstance:
     - target: {fileID: 7671270577186476433, guid: 1c00e5b29cb5e5741978546fa441b511,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0484974
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 7671270577186476433, guid: 1c00e5b29cb5e5741978546fa441b511,
         type: 3}
@@ -3604,7 +3609,7 @@ PrefabInstance:
     - target: {fileID: 7671270577186476433, guid: 1c00e5b29cb5e5741978546fa441b511,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.260132
+      value: 15.27
       objectReference: {fileID: 0}
     - target: {fileID: 7671270577186476433, guid: 1c00e5b29cb5e5741978546fa441b511,
         type: 3}
@@ -4548,10 +4553,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 298744117520805562, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
+      propertyPath: startingWeapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 298744117520805562, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
+      propertyPath: startingWeapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 8323776800172828795, guid: 5bcfa82d9c3662f4a8e4ff6776a94f17,
+        type: 3}
+    - target: {fileID: 298744117520805562, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
+      propertyPath: startingWeapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 8323776800172828795, guid: 72957e991160ced449739df6f66d91c1,
+        type: 3}
     - target: {fileID: 7253983127304857660, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8303093099919959869, guid: 761cdc9e4e883334cbdcea062d0befa7,
+        type: 3}
+      propertyPath: far clip plane
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8746678193447392789, guid: 761cdc9e4e883334cbdcea062d0befa7,
         type: 3}
@@ -7893,6 +7920,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pickup_Machinegun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391986374566301945, guid: 067f6968bcc1ac84eab532efd54d142a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 067f6968bcc1ac84eab532efd54d142a, type: 3}
