@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DualsidedGlass
+  m_Shader: {fileID: 4800000, guid: 58639692bfba6d64e9634418f91a54b3, type: 3}
+  m_ShaderKeywords: _ALPHABLEND_ON _FADING_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: 5e159f3f89a173a49a5677f5e24e304b, type: 3}
+        m_Scale: {x: 2.44, y: 3.58}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Emission:
+        m_Texture: {fileID: 2800000, guid: 50b2c32ff3de94988a61633cb19060de, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 175.67, y: -0.96}
+        m_Offset: {x: 0, y: 0}
+    - _Flowmap:
+        m_Texture: {fileID: 2800000, guid: d0b796a46ea0614479cbf46cb9b8bca2, type: 3}
+        m_Scale: {x: 2.08, y: 3.31}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9c8ce2cb90ae0c94a906f520e4992018, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 28924146404686464, guid: 0e141b3397d234c8685509c5d77ebcf1,
+          type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTexture:
+        m_Texture: {fileID: 2800000, guid: 6a776ec156e558a48a2422a205f00783, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: c61fccd8d1ead9f4ba552eac31f586ae, type: 3}
+        m_Scale: {x: 8.29, y: 1.67}
+        m_Offset: {x: 0, y: 0}
+    - _NormalDistortion:
+        m_Texture: {fileID: 2800000, guid: c61fccd8d1ead9f4ba552eac31f586ae, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: 915411bfb95a0c444ac220a8c92305e8, type: 3}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 28924146404686464, guid: 0e141b3397d234c8685509c5d77ebcf1,
+          type: 2}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Activated: 0.42
+    - _BlendOp: 0
+    - _BumpScale: 1
+    - _CameraFadingEnabled: 1
+    - _CameraFarFadeDistance: 20.32
+    - _CameraNearFadeDistance: 2.28
+    - _ChromaticAberration: 0.1
+    - _Cull: 0
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _Dissolve: 0.1
+    - _DistortionBlend: 0.86
+    - _DistortionEnabled: 0
+    - _DistortionIntensity: 0.41
+    - _DistortionStrength: 17.03
+    - _DistortionStrengthScaled: 1.7030001
+    - _DstBlend: 10
+    - _EmissionEnabled: 1
+    - _EmissionIntensity: 0.27
+    - _FlipbookMode: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0
+    - _GlossyReflections: 1
+    - _IntensityLimitZone: 0
+    - _IntersectIntensity: 1.4
+    - _Life: 1
+    - _LightingEnabled: 1
+    - _LightningIntensity: 1.2
+    - _Metallic: 0
+    - _Method: 0.48
+    - _Mode: 2
+    - _OcclusionStrength: 1
+    - _OffsetSpeed: 2.55
+    - _Opacity: 0.27
+    - _Parallax: 0.02
+    - _Refraction: 0
+    - _RimPower: 3.3
+    - _ScanLines: 5.5
+    - _Smoothness: 0.14
+    - _SmoothnessTextureChannel: 0
+    - _SoftParticlesEnabled: 1
+    - _SoftParticlesFarFadeDistance: 52.62
+    - _SoftParticlesNearFadeDistance: 60.45
+    - _SpecularHighlights: 1
+    - _Speed: 0
+    - _SpeedofLimitZone: 0
+    - _SrcBlend: 5
+    - _Strech: 3.66
+    - _TotalLines: 39.89
+    - _Transparency: 0.1
+    - _UNormalDistortion: 0
+    - _USpeed: 0.09
+    - _USpeedInstance: 0.12
+    - _UTilingincludesinstance: 0
+    - _UVSec: 0
+    - _VNormalDistortion: 0
+    - _VSpeed: 0.21
+    - _VSpeedInstance: 0.06
+    - _VTilingincludesinstance: 1
+    - _WindQuality: 0
+    - _XTiling: 0.72
+    - _ZWrite: 0
+    - __dirty: 1
+    m_Colors:
+    - _AliveColor: {r: 1, g: 1, b: 1, a: 0}
+    - _CameraFadeParams: {r: 2.28, g: 0.05543237, b: 0, a: 0}
+    - _Color: {r: 0.7783019, g: 0.86725485, b: 1, a: 0.46666667}
+    - _DeadColor: {r: 0, g: 0.7498157, b: 1, a: 0}
+    - _EmissionColor: {r: 0, g: 0.58929294, b: 0.9811321, a: 1}
+    - _GridTiling: {r: 1, g: 1, b: 1, a: 11.18}
+    - _HologramColor: {r: 0, g: 1, b: 0.751724, a: 0}
+    - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
+    - _IntersectColor: {r: 0.8396226, g: 0.18614274, b: 0.18614274, a: 0}
+    - _PanSpeed: {r: 0.3, g: 0.3, b: 0.03, a: 0}
+    - _SoftParticleFadeParams: {r: 60.45, g: -0.12771389, b: 0, a: 0}
+    - _TintGeometry: {r: 0.36165005, g: 0.5144725, b: 0.5943396, a: 0}
+    - _TintLightning: {r: 0, g: 0.54687023, b: 1, a: 0}
