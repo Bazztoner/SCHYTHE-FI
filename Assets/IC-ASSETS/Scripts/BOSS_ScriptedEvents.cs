@@ -30,6 +30,8 @@ public class BOSS_ScriptedEvents : MonoBehaviour
     {
         eventTriggers[triggerIndex].gameObject.SetActive(false);
 
+        FindObjectOfType<GameFlowManager>().GetComponent<AudioSource>().Play();
+
         //do fucking something
         _bossPhase1 = GameObject.Instantiate(bossPhase1Prefab, bossPhase1Spawner.position, Quaternion.identity);
         _bossPhase1.transform.forward = bossPhase1Spawner.forward;
@@ -73,6 +75,7 @@ public class BOSS_ScriptedEvents : MonoBehaviour
         eventTriggers[triggerIndex].gameObject.SetActive(false);
         if (_bossPhase1 != null) Destroy(_bossPhase1.gameObject);
 
+        finalDoor.GetComponentInChildren<Light>().color = new Color(0.8f, 0, 0);
         finalDoor.ChangeActivationState(false);
 
         //do fucking something
@@ -89,6 +92,7 @@ public class BOSS_ScriptedEvents : MonoBehaviour
                 eventTriggers[triggerIndex + 1].gameObject.SetActive(true);
                 foreach (var item in thirdSetOfDoors)
                 {
+                    finalDoor.GetComponentInChildren<Light>().color = new Color(0.6494749f, 0.990566f, 0.6534527f);
                     item.ChangeActivationState(true);
                 }
                 yield break;

@@ -6,7 +6,7 @@ using System.Linq;
 public class BOSS_BossDoor : BOSS_DynamicRoomObject
 {
     const string _openAnParam = "open", _closeAnParam = "close";
-    public string doorName = "ActualDoor";
+    public string doorName = "Door";
     Animator _an;
 
     void Start()
