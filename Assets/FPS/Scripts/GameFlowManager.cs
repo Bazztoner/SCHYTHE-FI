@@ -103,6 +103,7 @@ public class GameFlowManager : MonoBehaviour
         }
         else
         {
+            GetComponent<AudioSource>().Stop();
             m_SceneToLoad = loseSceneName;
             m_TimeLoadEndGameScene = Time.time + endSceneLoadDelay;
         }
