@@ -30,7 +30,7 @@ public class BOSS_ScriptedEvents : MonoBehaviour
     {
         eventTriggers[triggerIndex].gameObject.SetActive(false);
 
-        FindObjectOfType<GameFlowManager>().GetComponent<AudioSource>().Play();
+        FindObjectOfType<GameFlowManager>().PlayLevelMusic(true);
 
         //do fucking something
         _bossPhase1 = GameObject.Instantiate(bossPhase1Prefab, bossPhase1Spawner.position, Quaternion.identity);

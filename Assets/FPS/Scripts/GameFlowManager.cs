@@ -72,6 +72,13 @@ public class GameFlowManager : MonoBehaviour
         }
     }
 
+    public void PlayLevelMusic(bool activate)
+    {
+        if (activate) GetComponent<AudioSource>().Play();
+        else GetComponent<AudioSource>().Stop();
+
+    }
+
     public void EndGame(bool win)
     {
         // unlocks the cursor before leaving the scene, to be able to click buttons
@@ -85,6 +92,8 @@ public class GameFlowManager : MonoBehaviour
         {
             m_SceneToLoad = winSceneName;
             m_TimeLoadEndGameScene = Time.time + endSceneLoadDelay + delayBeforeFadeToBlack;
+
+            PlayLevelMusic(false);
 
             // play a sound on win
             var audioSource = gameObject.AddComponent<AudioSource>();
@@ -103,7 +112,7 @@ public class GameFlowManager : MonoBehaviour
         }
         else
         {
-            GetComponent<AudioSource>().Stop();
+            PlayLevelMusic(false);
             m_SceneToLoad = loseSceneName;
             m_TimeLoadEndGameScene = Time.time + endSceneLoadDelay;
         }
