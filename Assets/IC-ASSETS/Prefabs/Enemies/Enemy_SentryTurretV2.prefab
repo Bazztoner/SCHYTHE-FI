@@ -155,6 +155,7 @@ MonoBehaviour:
   pathReachingRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   attackRangeColor: {r: 1, g: 0, b: 0, a: 1}
   detectionRangeColor: {r: 0, g: 0, b: 1, a: 1}
+  m_Health: {fileID: 0}
 --- !u!114 &6370966072896210225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,9 +319,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionSourcePoint: {fileID: 7962871965276212333}
-  detectionRange: 20
-  attackRange: 10
-  knownTargetTimeout: 1
+  detectionRange: 40
+  attackRange: 25
+  knownTargetTimeout: 1.3
   animator: {fileID: 0}
 --- !u!1 &3313055002718567669
 GameObject:
