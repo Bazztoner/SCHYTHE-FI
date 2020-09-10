@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/IC-ASSETS/Scenes/IntroMenu.unity
     guid: 56e3faabc5bb30f49a68bb8f1292f988
-  - enabled: 1
+  - enabled: 0
     path: Assets/IC-ASSETS/Scenes/MainLevel.unity
     guid: 626939cc73e647b45bb7dbfd59bdcc4f
   - enabled: 1
